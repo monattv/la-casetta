@@ -1,333 +1,62 @@
 /* =========================
-   RESET
-========================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-
-html,body{
-
-    width:100%;
-    height:100%;
-
-    overflow:hidden;
-
-    font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Arial,
-    sans-serif;
-
-}
-
-
-
-
-
-/* =========================
-   BACKGROUND
+   BACKGROUND SLIDESHOW
 ========================= */
 
 
-body{
-
-    min-height:100dvh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:#000;
-
-}
+const backgrounds = [
+    "bg1.jpg",
+    "bg2.jpeg",
+    "bg3.jpg",
+    "bg4.jpeg",
+    "bg5.jpg",
+    "bg6.jpg"
+];
 
 
-
-.background{
-
-    position:fixed;
-
-    inset:0;
-
-    background-size:cover;
-
-    background-position:center;
-
-    background-repeat:no-repeat;
-
-    z-index:-2;
-
-    animation:zoom 15s infinite alternate;
-
-}
+let currentBackground = 0;
 
 
-
-@keyframes zoom{
-
-    from{
-
-        transform:scale(1);
-
-    }
+const background = document.querySelector(".background");
 
 
-    to{
+function changeBackground(){
 
-        transform:scale(1.08);
+    background.style.opacity = "0";
 
-    }
+
+    setTimeout(()=>{
+
+
+        background.style.backgroundImage =
+        `url('${backgrounds[currentBackground]}')`;
+
+
+        background.style.opacity = "1";
+
+
+        currentBackground++;
+
+
+        if(currentBackground >= backgrounds.length){
+
+            currentBackground = 0;
+
+        }
+
+
+    },700);
 
 }
 
 
 
-.dark-overlay{
+background.style.transition="opacity .7s ease";
 
-    position:fixed;
 
-    inset:0;
+changeBackground();
 
-    background:
 
-    linear-gradient(
-
-    rgba(0,0,0,.35),
-
-    rgba(0,0,0,.85)
-
-    );
-
-
-
-    z-index:-1;
-
-}
-
-
-
-
-
-/* =========================
-   LANGUAGE
-========================= */
-
-
-.language-btn{
-
-
-    position:fixed;
-
-    top:25px;
-
-    right:25px;
-
-
-    z-index:10;
-
-
-    border:none;
-
-
-    padding:12px 18px;
-
-
-    border-radius:30px;
-
-
-    background:rgba(255,255,255,.15);
-
-
-    color:white;
-
-
-    backdrop-filter:blur(15px);
-
-
-    font-size:15px;
-
-
-    cursor:pointer;
-
-
-}
-
-
-
-
-
-/* =========================
-   MAIN CARD
-========================= */
-
-
-.home-card{
-
-
-    width:90%;
-
-    max-width:430px;
-
-
-    padding:32px 25px;
-
-
-    background:
-
-    rgba(20,20,20,.70);
-
-
-    border:
-
-    1px solid rgba(255,255,255,.18);
-
-
-    backdrop-filter:
-
-    blur(20px);
-
-
-
-    border-radius:32px;
-
-
-
-    color:white;
-
-
-
-    text-align:center;
-
-
-
-    box-shadow:
-
-    0 25px 80px rgba(0,0,0,.8);
-
-
-
-    animation:
-
-    cardShow .8s ease;
-
-}
-
-
-
-@keyframes cardShow{
-
-
-    from{
-
-        opacity:0;
-
-        transform:
-
-        translateY(40px);
-
-    }
-
-
-    to{
-
-        opacity:1;
-
-        transform:
-
-        translateY(0);
-
-    }
-
-}
-
-
-
-
-
-.location-badge{
-
-
-    display:inline-block;
-
-
-    padding:8px 16px;
-
-
-    border-radius:20px;
-
-
-    background:
-
-    rgba(255,255,255,.12);
-
-
-    color:#ddd;
-
-
-    font-size:12px;
-
-
-    letter-spacing:2px;
-
-
-    margin-bottom:18px;
-
-
-}
-
-
-
-
-h1{
-
-
-    font-size:32px;
-
-
-    margin-bottom:10px;
-
-
-}
-
-
-
-
-.subtitle{
-
-
-    color:white;
-
-
-    font-size:18px;
-
-
-}
-
-
-
-.description{
-
-
-    color:#ccc;
-
-
-    margin-top:10px;
-
-
-    margin-bottom:25px;
-
-
-    line-height:1.5;
-
-
-}
+setInterval(changeBackground,6000);
 
 
 
@@ -335,288 +64,181 @@ h1{
 
 
 /* =========================
-   BUTTONS
+   LANGUAGE SYSTEM
 ========================= */
 
 
-.actions{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
-
-}
+let language="en";
 
 
 
-
-.action-btn{
-
-
-    width:100%;
+const translations={
 
 
-    min-height:65px;
+en:{
 
 
-    border:none;
+title:"La Casetta Terrasini",
+
+welcome:"Your Sicilian home away from home.",
+
+intro:"Discover the house, book your stay and enjoy everything Terrasini has to offer.",
+
+booking:"Book Your Stay",
+
+booking_info:"Open Booking page",
+
+maps:"Get Directions",
+
+maps_info:"Open Google Maps",
+
+app:"Terrasini App",
+
+app_info:"Download the official app",
+
+airport:"Airport Transfers",
+
+airport_info:"Bus and transport information",
+
+emergency:"Emergency Numbers"
 
 
-    border-radius:22px;
-
-
-    display:flex;
-
-
-    align-items:center;
-
-
-    gap:15px;
-
-
-    padding:12px 18px;
-
-
-    cursor:pointer;
-
-
-    text-align:left;
-
-
-    transition:.25s;
-
-
-    color:white;
-
-
-    font-family:inherit;
-
-
-}
+},
 
 
 
-.action-btn:hover{
+it:{
 
 
-    transform:translateY(-3px);
+title:"La Casetta Terrasini",
 
+welcome:"La tua casa siciliana lontano da casa.",
 
-}
+intro:"Scopri la casa, prenota il soggiorno e vivi tutto quello che Terrasini offre.",
 
+booking:"Prenota il soggiorno",
 
+booking_info:"Apri Booking",
 
+maps:"Indicazioni stradali",
 
-.action-btn:active{
+maps_info:"Apri Google Maps",
 
+app:"App Terrasini",
 
-    transform:scale(.96);
+app_info:"Scarica l'app ufficiale",
+
+airport:"Trasferimenti aeroporto",
+
+airport_info:"Bus e informazioni trasporti",
+
+emergency:"Numeri di emergenza"
 
 
 }
 
 
-
-
-.action-btn span{
-
-
-    font-size:28px;
-
-
-}
+};
 
 
 
 
 
-.action-btn strong{
+function changeLanguage(){
 
 
-    display:block;
+language = language==="en" ? "it" : "en";
 
 
-    font-size:17px;
-
-
-}
+document.querySelector(".language-btn").innerHTML =
+language==="en" ? "🇬🇧 EN" : "🇮🇹 IT";
 
 
 
-.action-btn small{
+document.querySelectorAll("[data-i18n]").forEach(el=>{
 
 
-    display:block;
+let key=el.dataset.i18n;
 
 
-    color:rgba(255,255,255,.7);
+el.innerHTML =
+translations[language][key];
 
 
-    margin-top:3px;
+});
 
 
 }
 
 
 
-
-
-.booking{
-
-    background:white;
-
-    color:#111;
-
-}
-
-
-
-.booking small{
-
-    color:#555;
-
-}
-
-
-
-.maps{
-
-    background:#333;
-
-}
-
-
-
-.app{
-
-    background:#159447;
-
-}
-
-
-
-.airport{
-
-    background:#9a6b19;
-
-}
 
 
 
 
 
 /* =========================
-   EMERGENCY
+   DOUBLE CLICK ACTION
 ========================= */
 
 
-.emergency{
+let selectedAction=null;
 
 
-    margin-top:22px;
+function confirmAction(type,url){
 
 
-    padding-top:18px;
+let title=document.getElementById("confirm-title");
 
+let text=document.getElementById("confirm-text");
 
-    border-top:
-
-    1px solid rgba(255,255,255,.15);
-
-
-}
+let button=document.getElementById("continue-btn");
 
 
 
-.emergency h3{
+if(type==="booking"){
 
 
-    font-size:16px;
+title.innerHTML="🏡 Booking";
 
 
-    margin-bottom:15px;
+text.innerHTML=
 
-
-}
-
-
-
-.emergency-grid{
-
-
-    display:grid;
-
-
-    grid-template-columns:
-
-    repeat(4,1fr);
-
-
-    gap:8px;
+"Open Booking and reserve your stay at La Casetta Terrasini.";
 
 
 }
 
 
 
-.emergency-grid a{
+if(type==="maps"){
 
 
-    text-decoration:none;
+title.innerHTML="📍 Google Maps";
 
 
-    color:white;
+text.innerHTML=
 
-
-    background:
-
-    rgba(255,255,255,.1);
-
-
-    border-radius:15px;
-
-
-    padding:10px 5px;
-
-
-    display:flex;
-
-
-    flex-direction:column;
-
-
-    align-items:center;
-
-
-    font-size:18px;
+"Open navigation and find the exact location of the house.";
 
 
 }
 
 
 
-.emergency-grid span{
-
-
-    font-size:16px;
-
-
-    font-weight:bold;
-
-
-}
+selectedAction=url;
 
 
 
-.emergency-grid small{
+document.getElementById("confirm-box").style.display="flex";
 
 
-    font-size:10px;
 
+button.onclick=function(){
 
-    color:#ccc;
+window.location.href=selectedAction;
+
+};
 
 
 }
@@ -624,16 +246,118 @@ h1{
 
 
 
-footer{
 
 
-    margin-top:20px;
+function closePopup(){
+
+document.getElementById("confirm-box").style.display="none";
+
+}
 
 
-    font-size:13px;
 
 
-    color:#aaa;
+
+
+
+
+/* =========================
+   APP BUTTON
+========================= */
+
+
+function openAppConfirm(){
+
+
+
+let popup=document.getElementById("app-info");
+
+
+popup.style.display="flex";
+
+
+}
+
+
+
+
+
+function openApp(){
+
+
+
+let ua=navigator.userAgent.toLowerCase();
+
+
+
+if(ua.includes("android")){
+
+
+window.location.href=
+
+"https://play.google.com/store/apps/details?id=com.goodbarber.terrasini";
+
+
+}
+
+
+else if(
+
+ua.includes("iphone") ||
+
+ua.includes("ipad")
+
+){
+
+
+window.location.href=
+
+"https://apps.apple.com/it/app/terrasini/id993594848";
+
+
+}
+
+
+else{
+
+
+window.location.href=
+
+"https://apps.apple.com/it/app/terrasini/id993594848";
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =========================
+   INFORMATION WINDOWS
+========================= */
+
+
+function openInfo(id){
+
+
+document.getElementById(id).style.display="flex";
+
+
+}
+
+
+
+function closeInfo(id){
+
+
+document.getElementById(id).style.display="none";
 
 
 }
@@ -644,236 +368,27 @@ footer{
 
 
 /* =========================
-   POPUPS
+   CLOSE POPUPS CLICK OUTSIDE
 ========================= */
 
 
-
-.popup{
-
-
-    display:none;
+document.querySelectorAll(".popup").forEach(popup=>{
 
 
-    position:fixed;
+popup.addEventListener("click",function(e){
 
 
-    inset:0;
+if(e.target===popup){
 
 
-    z-index:50;
-
-
-    background:
-
-    rgba(0,0,0,.75);
-
-
-    justify-content:center;
-
-
-    align-items:center;
-
-
-    padding:25px;
+popup.style.display="none";
 
 
 }
 
 
 
+});
 
 
-.popup-content{
-
-
-    width:100%;
-
-
-    max-width:420px;
-
-
-    max-height:85vh;
-
-
-    overflow:auto;
-
-
-    background:#151515;
-
-
-    color:white;
-
-
-    border-radius:30px;
-
-
-    padding:35px 25px;
-
-
-    text-align:center;
-
-
-    animation:
-
-    popupShow .35s ease;
-
-
-    box-shadow:
-
-    0 25px 80px black;
-
-
-}
-
-
-
-
-@keyframes popupShow{
-
-
-    from{
-
-        opacity:0;
-
-        transform:
-
-        scale(.85)
-
-        translateY(40px);
-
-    }
-
-
-    to{
-
-        opacity:1;
-
-        transform:
-
-        scale(1)
-
-        translateY(0);
-
-    }
-
-}
-
-
-
-
-
-.popup-content h2{
-
-
-    margin-bottom:20px;
-
-
-}
-
-
-
-.popup-content p{
-
-
-    color:#ddd;
-
-
-    line-height:1.6;
-
-
-}
-
-
-
-
-
-.close-btn{
-
-
-    position:absolute;
-
-
-    top:30px;
-
-
-    right:35px;
-
-
-    border:none;
-
-
-    background:none;
-
-
-    color:white;
-
-
-    font-size:25px;
-
-
-}
-
-
-
-
-
-.popup-link{
-
-
-    display:block;
-
-
-    width:100%;
-
-
-    margin-top:15px;
-
-
-    padding:16px;
-
-
-    border-radius:18px;
-
-
-    background:white;
-
-
-    color:#111;
-
-
-    text-decoration:none;
-
-
-    border:none;
-
-
-    font-size:16px;
-
-
-    font-weight:bold;
-
-
-}
-
-
-
-
-
-
-/* MOBILE SAFE AREA */
-
-
-@supports(padding:max(0px)){
-
-
-.home-card{
-
-    margin-bottom:
-
-    env(safe-area-inset-bottom);
-
-}
-
-
-}
+});
