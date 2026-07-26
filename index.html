@@ -17,15 +17,13 @@
 <body>
 
 
-<!-- BACKGROUND -->
-
 <div class="background"></div>
 
 <div class="dark-overlay"></div>
 
 
 
-<!-- LANGUAGE BUTTON -->
+<!-- LANGUAGE -->
 
 <button class="language-btn" onclick="changeLanguage()">
 
@@ -35,7 +33,10 @@
 
 
 
-<!-- MAIN CONTAINER -->
+
+
+<!-- MAIN CARD -->
+
 
 <main class="home-card">
 
@@ -74,18 +75,20 @@ Discover the house, book your stay and enjoy everything Terrasini has to offer.
 
 
 
-<!-- ACTION BUTTONS -->
-
-
 <div class="actions">
 
 
 
 <button class="action-btn booking"
+
 onclick="confirmAction(
+
 'booking',
+
 'https://www.booking.com/hotel/it/la-casetta-terrasini.it.html'
+
 )">
+
 
 <span>🏡</span>
 
@@ -97,13 +100,16 @@ Book Your Stay
 
 </strong>
 
+
 <small data-i18n="booking_info">
 
 Open Booking page
 
 </small>
 
+
 </div>
+
 
 </button>
 
@@ -111,10 +117,16 @@ Open Booking page
 
 
 
+
+
 <button class="action-btn maps"
+
 onclick="confirmAction(
+
 'maps',
+
 'https://maps.app.goo.gl/RjvQkZoqxyktHTH37?g_st=ic'
+
 )">
 
 
@@ -149,6 +161,7 @@ Open Google Maps
 
 
 <button class="action-btn app"
+
 onclick="openAppConfirm()">
 
 
@@ -166,7 +179,7 @@ Terrasini App
 
 <small data-i18n="app_info">
 
-Download the official app
+Download official app
 
 </small>
 
@@ -182,8 +195,8 @@ Download the official app
 
 
 
-
 <button class="action-btn airport"
+
 onclick="openInfo('airport')">
 
 
@@ -213,7 +226,6 @@ Bus and transport information
 
 
 
-
 </div>
 
 
@@ -221,7 +233,7 @@ Bus and transport information
 
 
 
-<!-- EMERGENCY SECTION -->
+<!-- EMERGENCY -->
 
 
 <section class="emergency">
@@ -229,17 +241,21 @@ Bus and transport information
 
 <h3 data-i18n="emergency">
 
-Emergency Numbers
+Emergency Contacts
 
 </h3>
+
 
 
 <div class="emergency-grid">
 
 
+
 <a href="tel:112">
 
+
 🚨
+
 
 <span>
 
@@ -247,75 +263,42 @@ Emergency Numbers
 
 </span>
 
+
 <small>
 
 Emergency
 
 </small>
 
+
 </a>
 
 
 
-<a href="tel:118">
 
-🚑
+
+<a href="tel:+390000000000">
+
+
+👤
+
 
 <span>
 
-118
+Host
 
 </span>
 
-<small>
-
-Ambulance
-
-</small>
-
-</a>
-
-
-
-
-<a href="tel:115">
-
-🚒
-
-<span>
-
-115
-
-</span>
 
 <small>
 
-Fire
+Call Host
 
 </small>
 
-</a>
-
-
-
-
-<a href="tel:113">
-
-👮
-
-<span>
-
-113
-
-</span>
-
-<small>
-
-Police
-
-</small>
 
 </a>
+
 
 
 
@@ -336,14 +319,9 @@ Enjoy your stay in Sicily 🇮🇹
 
 
 
+
 </main>
-
-
-
-
-
-
-<!-- CONFIRM POPUP -->
+<!-- CONFIRM ACTION POPUP -->
 
 
 <div id="confirm-box" class="popup">
@@ -357,6 +335,7 @@ Enjoy your stay in Sicily 🇮🇹
 Continue?
 
 </h2>
+
 
 
 <p id="confirm-text">
@@ -396,8 +375,8 @@ Continue →
 
 
 
-<!-- INFORMATION POPUPS -->
 
+<!-- AIRPORT POPUP -->
 
 
 <div id="airport" class="popup info-popup">
@@ -409,6 +388,7 @@ Continue →
 <button class="close-btn" onclick="closeInfo('airport')">
 
 ✕
+
 </button>
 
 
@@ -420,19 +400,26 @@ Continue →
 </h2>
 
 
+
 <p>
 
 Arriving or leaving Sicily?
 
 <br><br>
 
-Bus connections between:
+Bus connections:
 
 <br>
 
-<strong>Palermo Airport ↔ Terrasini</strong>
+<strong>
+
+Palermo Airport ↔ Terrasini
+
+</strong>
+
 
 <br><br>
+
 
 Autoservizi Cracchiolo provides transport services.
 
@@ -454,6 +441,7 @@ target="_blank">
 
 
 
+
 <a class="popup-link"
 
 href="tel:+390918683361">
@@ -464,10 +452,78 @@ href="tel:+390918683361">
 
 
 
+
 </div>
 
 
 </div>
+
+
+
+
+
+
+
+
+<!-- APP POPUP -->
+
+
+<div id="app-info" class="popup info-popup">
+
+
+<div class="popup-content">
+
+
+<button class="close-btn" onclick="closeInfo('app-info')">
+
+✕
+
+</button>
+
+
+
+<h2>
+
+📱 Terrasini App
+
+</h2>
+
+
+
+<p>
+
+Discover Terrasini, local attractions and useful information through the official app.
+
+<br><br>
+
+Available for iPhone and Android.
+
+</p>
+
+
+
+
+<button class="popup-link"
+
+onclick="openApp()">
+
+Open App
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
 <!-- WIFI POPUP -->
 
 
@@ -495,12 +551,13 @@ href="tel:+390918683361">
 
 <p>
 
-Stay connected during your holiday.
 
-<br><br>
+<strong>
 
+Wi-Fi Name
 
-<strong>Wi-Fi Name</strong>
+</strong>
+
 
 <br>
 
@@ -510,18 +567,41 @@ ADD WIFI NAME
 <br><br>
 
 
-<strong>Password</strong>
+
+<strong>
+
+Password
+
+</strong>
+
 
 <br>
 
 ADD PASSWORD
 
 
+
 <br><br>
 
 
-You can add here all useful information about the house:
-air conditioning, kitchen, rubbish collection and house rules.
+Here you can add useful information:
+
+<br><br>
+
+• Air conditioning
+
+<br>
+
+• Kitchen instructions
+
+<br>
+
+• Waste collection
+
+<br>
+
+• House rules
+
 
 </p>
 
@@ -536,65 +616,9 @@ air conditioning, kitchen, rubbish collection and house rules.
 
 
 
-<!-- APP INFO POPUP -->
 
 
-<div id="app-info" class="popup info-popup">
-
-
-<div class="popup-content">
-
-
-<button class="close-btn" onclick="closeInfo('app-info')">
-
-✕
-
-</button>
-
-
-
-<h2>
-
-📱 Terrasini App
-
-</h2>
-
-
-
-<p>
-
-Discover Terrasini, local attractions and useful information directly from the official app.
-
-<br><br>
-
-Available for iPhone and Android.
-
-</p>
-
-
-
-<button class="popup-link"
-
-onclick="openApp()">
-
-Open App Store / Google Play
-
-</button>
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- EXTRA INFORMATION -->
+<!-- ABOUT POPUP -->
 
 
 <div id="about" class="popup info-popup">
@@ -621,19 +645,18 @@ Open App Store / Google Play
 
 <p>
 
+
 Welcome to La Casetta Terrasini.
 
 <br><br>
 
-A comfortable place to experience Sicily, close to the sea, restaurants and the beauty of Terrasini.
+
+A comfortable Sicilian home close to the sea, restaurants and the beauty of Terrasini.
 
 <br><br>
 
-✔ Comfortable rooms
 
-<br>
-
-✔ Equipped kitchen
+✔ Free Wi-Fi
 
 <br>
 
@@ -641,12 +664,16 @@ A comfortable place to experience Sicily, close to the sea, restaurants and the 
 
 <br>
 
-✔ Free Wi-Fi
+✔ Equipped kitchen
+
+<br>
+
+✔ Comfortable rooms
+
 
 </p>
 
 
-
 </div>
 
 
@@ -658,9 +685,11 @@ A comfortable place to experience Sicily, close to the sea, restaurants and the 
 
 
 
-<!-- SCRIPT -->
+
+<!-- JAVASCRIPT -->
 
 <script src="script.js"></script>
+
 
 
 </body>
