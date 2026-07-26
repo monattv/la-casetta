@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>La Casetta Terrasini</title>
 
@@ -12,113 +13,230 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
 }
 
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+
+
 body{
-    height:100vh;
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    background-size:cover;
-    background-position:center;
+
+    min-height:100dvh;
+
     transition:background-image 1s ease;
+
 }
+
+
+/* effetto scuro sopra la foto */
 
 .overlay{
+
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.45);
+
+    background:
+    linear-gradient(
+    rgba(0,0,0,.45),
+    rgba(0,0,0,.65)
+    );
+
 }
+
+
+/* contenitore centrale */
 
 .card{
+
     position:relative;
     z-index:2;
+
     width:90%;
-    max-width:450px;
-    background:rgba(255,255,255,0.92);
-    padding:35px;
-    border-radius:25px;
+    max-width:420px;
+
+    padding:35px 28px;
+
+    background:rgba(20,20,20,.78);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:28px;
+
     text-align:center;
-    box-shadow:0 10px 35px rgba(0,0,0,0.35);
+
+    color:white;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.6);
+
 }
+
+
+/* titolo */
 
 h1{
-    color:#003580;
+
     font-size:32px;
-    margin-bottom:15px;
+
+    margin-bottom:12px;
+
+    letter-spacing:.5px;
+
 }
+
+
+/* testo */
 
 p{
-    color:#444;
+
+    color:#ddd;
+
+    font-size:16px;
+
     line-height:1.5;
-    margin-bottom:25px;
+
+    margin-bottom:30px;
+
 }
+
+
+
+/* pulsanti */
+
 
 .button{
-    display:block;
-    padding:17px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    height:60px;
+
     margin:15px 0;
-    border-radius:15px;
+
+    border-radius:18px;
+
     text-decoration:none;
-    font-size:20px;
-    font-weight:bold;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    transition:.3s;
+
 }
+
+
+.button:active{
+
+    transform:scale(.96);
+
+}
+
 
 .booking{
-    background:#003580;
-    color:white;
+
+    background:white;
+
+    color:#111;
+
 }
+
 
 .app{
-    background:#28a745;
+
+    background:#1db954;
+
     color:white;
+
 }
 
+
+
 .footer{
-    margin-top:20px;
+
+    margin-top:25px;
+
     font-size:13px;
-    color:#666;
+
+    color:#aaa;
+
 }
+
 
 </style>
 
 
+
 <script>
 
+
 let images=[
+
 "IMG_2108.jpeg",
 "IMG_2110.jpeg",
 "IMG_2111.jpeg"
+
 ];
 
+
 let index=0;
+
 
 function changeBackground(){
 
 document.body.style.backgroundImage =
 "url('" + images[index] + "')";
 
+
 index++;
 
+
 if(index>=images.length){
+
 index=0;
-}
 
 }
+
+
+}
+
+
 
 setInterval(changeBackground,5000);
+
 window.onload=changeBackground;
+
+
 
 
 function openApp(){
 
+
 let ua=navigator.userAgent.toLowerCase();
+
 
 if(ua.includes("android")){
 
+
 window.location.href=
 "https://play.google.com/store/apps/details?id=com.goodbarber.terrasini";
+
 
 }
 
@@ -127,58 +245,82 @@ ua.includes("iphone") ||
 ua.includes("ipad")
 ){
 
+
 window.location.href=
 "https://apps.apple.com/it/app/terrasini/id993594848";
+
 
 }
 
 else{
 
+
 window.location.href=
 "https://play.google.com/store/apps/details?id=com.goodbarber.terrasini";
 
-}
 
 }
+
+
+}
+
 
 </script>
+
 
 </head>
 
 
 <body>
 
+
 <div class="overlay"></div>
 
 
 <div class="card">
 
-<h1>La Casetta Terrasini</h1>
+
+<h1>
+La Casetta Terrasini
+</h1>
+
 
 <p>
-Welcome to your Sicilian getaway.<br>
-Discover our apartment, book your stay and explore everything Terrasini has to offer.
+Your Sicilian escape starts here.<br><br>
+
+Book your stay and discover Terrasini through our official app.
 </p>
+
 
 
 <a class="button booking"
 href="https://www.booking.com/hotel/it/la-casetta-terrasini.it.html">
+
 🏡 Book Your Stay
+
 </a>
+
 
 
 <a class="button app"
-href="#" onclick="openApp()">
-📱 Terrasini App
+href="#"
+onclick="openApp()">
+
+📱 Explore Terrasini App
+
 </a>
 
 
+
 <div class="footer">
-Enjoy your stay in Sicily 🇮🇹
+
+Welcome to Sicily 🇮🇹
+
 </div>
 
 
 </div>
+
 
 </body>
 </html>
