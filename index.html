@@ -1,77 +1,104 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Benvenuto</title>
+<title>La Casetta Terrasini</title>
 
 <style>
-body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f5f5f5;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
 }
 
-.container{
-    text-align:center;
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,.15);
-    width:90%;
-    max-width:400px;
+body{
+height:100vh;
+background:url("background.jpg") center center/cover no-repeat;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.45);
+}
+
+.card{
+position:relative;
+z-index:1;
+width:90%;
+max-width:480px;
+background:rgba(255,255,255,.92);
+backdrop-filter:blur(10px);
+border-radius:22px;
+padding:35px;
+text-align:center;
+box-shadow:0 15px 35px rgba(0,0,0,.3);
 }
 
 h1{
-    color:#333;
-    margin-bottom:30px;
+font-size:34px;
+margin-bottom:10px;
+color:#003580;
 }
 
-button{
-    width:100%;
-    padding:18px;
-    margin:12px 0;
-    font-size:20px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    transition:.2s;
+p{
+color:#555;
+line-height:1.6;
+margin-bottom:30px;
 }
 
-button:hover{
-    transform:scale(1.03);
+a{
+display:block;
+text-decoration:none;
+padding:18px;
+margin:15px 0;
+border-radius:14px;
+font-size:20px;
+font-weight:bold;
+transition:.25s;
 }
 
 .booking{
-    background:#003580;
-    color:white;
+background:#003580;
+color:white;
+}
+
+.booking:hover{
+background:#0047aa;
 }
 
 .app{
-    background:#34a853;
-    color:white;
+background:#1aa34a;
+color:white;
+}
+
+.app:hover{
+background:#14853b;
+}
+
+.footer{
+margin-top:20px;
+font-size:13px;
+color:#777;
 }
 </style>
 
 <script>
-function apriBooking(){
-    window.location.href="https://www.booking.com/hotel/it/la-casetta-terrasini.it.html";
+function openApp(){
+const ua=navigator.userAgent.toLowerCase();
+
+if(ua.includes("android")){
+location.href="https://play.google.com/store/apps/details?id=com.goodbarber.terrasini";
+}else if(ua.includes("iphone")||ua.includes("ipad")){
+location.href="https://apps.apple.com/it/app/terrasini/id993594848";
+}else{
+location.href="https://play.google.com/store/apps/details?id=com.goodbarber.terrasini";
 }
-
-function apriApp(){
-    const ua=navigator.userAgent.toLowerCase();
-
-    if(ua.includes("android")){
-        window.location.href="https://play.google.com/store/apps/details?id=com.goodbarber.terrasini";
-    }else if(ua.includes("iphone") || ua.includes("ipad") || ua.includes("ipod")){
-        window.location.href="https://apps.apple.com/it/app/terrasini/id993594848";
-    }else{
-        window.location.href="https://play.google.com/store/apps/details?id=com.goodbarber.terrasini";
-    }
 }
 </script>
 
@@ -79,16 +106,28 @@ function apriApp(){
 
 <body>
 
-<div class="container">
-<h1>Benvenuto 👋</h1>
+<div class="overlay"></div>
 
-<button class="booking" onclick="apriBooking()">
-🏠 Casetta Booking
-</button>
+<div class="card">
 
-<button class="app" onclick="apriApp()">
-📱 App Terrasini
-</button>
+<h1>La Casetta Terrasini</h1>
+
+<p>
+Experience the charm of Sicily in the heart of Terrasini.
+Plan your stay, discover local attractions and enjoy everything the town has to offer.
+</p>
+
+<a class="booking" href="https://www.booking.com/hotel/it/la-casetta-terrasini.it.html">
+🏡 Book Your Stay
+</a>
+
+<a class="app" href="#" onclick="openApp()">
+📱 Discover Terrasini App
+</a>
+
+<div class="footer">
+We hope you enjoy your stay in Terrasini 🇮🇹
+</div>
 
 </div>
 
