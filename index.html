@@ -4,467 +4,12 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>La Casetta Terrasini</title>
 
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-
-html,body{
-
-height:100%;
-width:100%;
-
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-
-overflow:hidden;
-
-}
-
-
-
-body{
-
-background-size:cover;
-
-background-position:center;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-transition:background-image 1s ease;
-
-}
-
-
-
-.overlay{
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.65);
-
-}
-
-
-
-/* MENU BUTTON */
-
-.menu{
-
-position:fixed;
-
-top:25px;
-
-right:25px;
-
-z-index:20;
-
-width:50px;
-
-height:50px;
-
-border-radius:50%;
-
-background:rgba(255,255,255,.15);
-
-backdrop-filter:blur(10px);
-
-color:white;
-
-font-size:25px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-cursor:pointer;
-
-}
-
-
-
-
-/* MAIN CARD */
-
-
-.card{
-
-position:relative;
-
-z-index:2;
-
-width:90%;
-
-max-width:430px;
-
-padding:35px 28px;
-
-background:rgba(15,15,15,.8);
-
-border-radius:30px;
-
-border:1px solid rgba(255,255,255,.15);
-
-backdrop-filter:blur(18px);
-
-color:white;
-
-text-align:center;
-
-box-shadow:0 25px 70px black;
-
-}
-
-
-
-.badge{
-
-font-size:12px;
-
-letter-spacing:2px;
-
-color:#ccc;
-
-margin-bottom:20px;
-
-}
-
-
-
-h1{
-
-font-size:32px;
-
-margin-bottom:15px;
-
-}
-
-
-
-p{
-
-color:#ddd;
-
-line-height:1.5;
-
-margin-bottom:20px;
-
-}
-
-
-
-.button{
-
-display:flex;
-
-height:55px;
-
-width:100%;
-
-align-items:center;
-
-justify-content:center;
-
-margin:12px 0;
-
-border-radius:18px;
-
-text-decoration:none;
-
-font-size:17px;
-
-font-weight:600;
-
-border:none;
-
-cursor:pointer;
-
-}
-
-
-
-.booking{
-
-background:white;
-
-color:#111;
-
-}
-
-
-
-.app{
-
-background:#1db954;
-
-color:white;
-
-}
-
-
-
-.maps{
-
-background:#333;
-
-color:white;
-
-}
-
-
-
-.gold{
-
-background:#b8862c;
-
-color:white;
-
-}
-
-
-
-.footer{
-
-margin-top:20px;
-
-font-size:13px;
-
-color:#aaa;
-
-}
-
-
-
-
-/* SIDE MENU */
-
-
-.drawer{
-
-position:fixed;
-
-top:0;
-
-right:-100%;
-
-width:85%;
-
-max-width:380px;
-
-height:100%;
-
-background:#111;
-
-z-index:30;
-
-padding:35px 25px;
-
-transition:.4s;
-
-overflow-y:auto;
-
-color:white;
-
-}
-
-
-
-.drawer.open{
-
-right:0;
-
-}
-
-
-
-.drawer h2{
-
-margin-bottom:25px;
-
-}
-
-
-
-.item{
-
-padding:18px 10px;
-
-border-bottom:1px solid #333;
-
-font-size:18px;
-
-cursor:pointer;
-
-}
-
-
-
-
-/* POPUP PAGES */
-
-
-.page{
-
-display:none;
-
-position:fixed;
-
-inset:0;
-
-z-index:40;
-
-background:#111;
-
-color:white;
-
-padding:40px 25px;
-
-overflow-y:auto;
-
-}
-
-
-
-.page h2{
-
-font-size:30px;
-
-margin-bottom:20px;
-
-}
-
-
-
-.close{
-
-background:#333;
-
-padding:15px;
-
-border-radius:15px;
-
-margin-bottom:25px;
-
-cursor:pointer;
-
-}
-
-
-
-.page p{
-
-color:#ddd;
-
-}
-
-
-
-</style>
-
-
-
-<script>
-
-
-let images=[
-
-"IMG_2108.jpeg",
-
-"IMG_2110.jpeg",
-
-"IMG_2111.jpeg"
-
-];
-
-
-let i=0;
-
-
-function bg(){
-
-document.body.style.backgroundImage=
-"url('"+images[i]+"')";
-
-i++;
-
-if(i>=images.length){
-
-i=0;
-
-}
-
-}
-
-
-setInterval(bg,5000);
-
-window.onload=bg;
-
-
-
-function menu(){
-
-document.getElementById("drawer").classList.toggle("open");
-
-}
-
-
-
-function page(id){
-
-document.getElementById(id).style.display="block";
-
-}
-
-
-
-function closePage(id){
-
-document.getElementById(id).style.display="none";
-
-}
-
-
-
-function openApp(){
-
-let ua=navigator.userAgent.toLowerCase();
-
-
-if(ua.includes("android")){
-
-location.href="https://play.google.com/store/apps/details?id=com.goodbarber.terrasini";
-
-}
-
-else if(ua.includes("iphone")){
-
-location.href="https://apps.apple.com/it/app/terrasini/id993594848";
-
-}
-
-}
-
-
-
-</script>
-
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -472,174 +17,638 @@ location.href="https://apps.apple.com/it/app/terrasini/id993594848";
 <body>
 
 
-<div class="overlay"></div>
+<!-- BACKGROUND -->
+
+<div class="background"></div>
+
+<div class="dark-overlay"></div>
 
 
 
-<div class="menu" onclick="menu()">
+<!-- LANGUAGE BUTTON -->
 
-☰
+<button class="language-btn" onclick="changeLanguage()">
 
-</div>
+🇬🇧 EN
 
-
-
-
-<div class="card">
+</button>
 
 
-<div class="badge">
+
+<!-- MAIN CONTAINER -->
+
+<main class="home-card">
+
+
+<div class="location-badge">
 
 SICILY • TERRASINI
 
 </div>
 
 
-<h1>
+
+<h1 data-i18n="title">
+
 La Casetta Terrasini
+
 </h1>
 
 
-<p>
 
-Welcome to your Sicilian home.<br>
+<p class="subtitle" data-i18n="welcome">
 
-Discover the house, the town and everything you need for your stay.
+Your Sicilian home away from home.
 
 </p>
 
 
 
-<a class="button booking"
-href="https://www.booking.com/hotel/it/la-casetta-terrasini.it.html">
+<p class="description" data-i18n="intro">
 
-🏡 Book Your Stay
+Discover the house, book your stay and enjoy everything Terrasini has to offer.
 
-</a>
-
-
-
-<a class="button app"
-onclick="openApp()">
-
-📱 Terrasini App
-
-</a>
+</p>
 
 
 
-<a class="button maps"
-href="https://maps.app.goo.gl/RjvQkZoqxyktHTH37?g_st=ic">
-
-📍 Location
-
-</a>
 
 
+<!-- ACTION BUTTONS -->
 
-<div class="footer">
 
-Enjoy Sicily 🇮🇹
+<div class="actions">
+
+
+
+<button class="action-btn booking"
+onclick="confirmAction(
+'booking',
+'https://www.booking.com/hotel/it/la-casetta-terrasini.it.html'
+)">
+
+<span>🏡</span>
+
+<div>
+
+<strong data-i18n="booking">
+
+Book Your Stay
+
+</strong>
+
+<small data-i18n="booking_info">
+
+Open Booking page
+
+</small>
+
+</div>
+
+</button>
+
+
+
+
+
+<button class="action-btn maps"
+onclick="confirmAction(
+'maps',
+'https://maps.app.goo.gl/RjvQkZoqxyktHTH37?g_st=ic'
+)">
+
+
+<span>📍</span>
+
+
+<div>
+
+<strong data-i18n="maps">
+
+Get Directions
+
+</strong>
+
+
+<small data-i18n="maps_info">
+
+Open Google Maps
+
+</small>
+
 
 </div>
 
 
+</button>
+
+
+
+
+
+
+
+<button class="action-btn app"
+onclick="openAppConfirm()">
+
+
+<span>📱</span>
+
+
+<div>
+
+<strong data-i18n="app">
+
+Terrasini App
+
+</strong>
+
+
+<small data-i18n="app_info">
+
+Download the official app
+
+</small>
+
+
+</div>
+
+
+</button>
+
+
+
+
+
+
+
+
+<button class="action-btn airport"
+onclick="openInfo('airport')">
+
+
+<span>✈️</span>
+
+
+<div>
+
+<strong data-i18n="airport">
+
+Airport Transfers
+
+</strong>
+
+
+<small data-i18n="airport_info">
+
+Bus and transport information
+
+</small>
+
+
+</div>
+
+
+</button>
+
+
+
+
 </div>
 
 
 
 
 
-<div id="drawer" class="drawer">
+
+<!-- EMERGENCY SECTION -->
 
 
-<h2>
+<section class="emergency">
 
-Guest Menu
+
+<h3 data-i18n="emergency">
+
+Emergency Numbers
+
+</h3>
+
+
+<div class="emergency-grid">
+
+
+<a href="tel:112">
+
+🚨
+
+<span>
+
+112
+
+</span>
+
+<small>
+
+Emergency
+
+</small>
+
+</a>
+
+
+
+<a href="tel:118">
+
+🚑
+
+<span>
+
+118
+
+</span>
+
+<small>
+
+Ambulance
+
+</small>
+
+</a>
+
+
+
+
+<a href="tel:115">
+
+🚒
+
+<span>
+
+115
+
+</span>
+
+<small>
+
+Fire
+
+</small>
+
+</a>
+
+
+
+
+<a href="tel:113">
+
+👮
+
+<span>
+
+113
+
+</span>
+
+<small>
+
+Police
+
+</small>
+
+</a>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<footer>
+
+Enjoy your stay in Sicily 🇮🇹
+
+</footer>
+
+
+
+</main>
+
+
+
+
+
+
+<!-- CONFIRM POPUP -->
+
+
+<div id="confirm-box" class="popup">
+
+
+<div class="popup-content">
+
+
+<h2 id="confirm-title">
+
+Continue?
 
 </h2>
 
 
-<div class="item" onclick="page('about')">
+<p id="confirm-text">
 
-🏠 About The House
+</p>
+
+
+
+<div class="popup-buttons">
+
+
+<button onclick="closePopup()">
+
+Cancel
+
+</button>
+
+
+
+<button id="continue-btn">
+
+Continue →
+
+</button>
+
 
 </div>
 
 
-<div class="item" onclick="page('check')">
+</div>
 
-🔑 Check-in / Check-out
 
 </div>
 
 
-<div class="item" onclick="page('wifi')">
+
+
+
+
+<!-- INFORMATION POPUPS -->
+
+
+
+<div id="airport" class="popup info-popup">
+
+
+<div class="popup-content">
+
+
+<button class="close-btn" onclick="closeInfo('airport')">
+
+✕
+</button>
+
+
+
+<h2>
+
+✈️ Airport Transfers
+
+</h2>
+
+
+<p>
+
+Arriving or leaving Sicily?
+
+<br><br>
+
+Bus connections between:
+
+<br>
+
+<strong>Palermo Airport ↔ Terrasini</strong>
+
+<br><br>
+
+Autoservizi Cracchiolo provides transport services.
+
+</p>
+
+
+
+
+<a class="popup-link"
+
+href="https://www.autoservizicracchiolo.it"
+
+target="_blank">
+
+🚍 Visit Website
+
+</a>
+
+
+
+
+<a class="popup-link"
+
+href="tel:+390918683361">
+
+📞 Call Office
+
+</a>
+
+
+
+</div>
+
+
+</div>
+<!-- WIFI POPUP -->
+
+
+<div id="wifi" class="popup info-popup">
+
+
+<div class="popup-content">
+
+
+<button class="close-btn" onclick="closeInfo('wifi')">
+
+✕
+
+</button>
+
+
+
+<h2>
 
 📶 Wi-Fi & House Guide
 
-</div>
+</h2>
 
 
-<div class="item" onclick="page('explore')">
-
-🍝 Explore Terrasini
-
-</div>
-
-
-<div class="item" onclick="page('food')">
-
-🍽 Restaurants
-
-</div>
-
-
-<div class="item" onclick="page('airport')">
-
-✈️ Airport & Transfers
-
-</div>
-
-
-<div class="item" onclick="page('gallery')">
-
-📸 Gallery
-
-</div>
-
-
-<div class="item" onclick="page('contact')">
-
-📞 Contact Host
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-<div id="about" class="page">
-
-<div class="close" onclick="closePage('about')">← Back</div>
-
-<h2>About The House</h2>
 
 <p>
+
+Stay connected during your holiday.
+
+<br><br>
+
+
+<strong>Wi-Fi Name</strong>
+
+<br>
+
+ADD WIFI NAME
+
+
+<br><br>
+
+
+<strong>Password</strong>
+
+<br>
+
+ADD PASSWORD
+
+
+<br><br>
+
+
+You can add here all useful information about the house:
+air conditioning, kitchen, rubbish collection and house rules.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- APP INFO POPUP -->
+
+
+<div id="app-info" class="popup info-popup">
+
+
+<div class="popup-content">
+
+
+<button class="close-btn" onclick="closeInfo('app-info')">
+
+✕
+
+</button>
+
+
+
+<h2>
+
+📱 Terrasini App
+
+</h2>
+
+
+
+<p>
+
+Discover Terrasini, local attractions and useful information directly from the official app.
+
+<br><br>
+
+Available for iPhone and Android.
+
+</p>
+
+
+
+<button class="popup-link"
+
+onclick="openApp()">
+
+Open App Store / Google Play
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- EXTRA INFORMATION -->
+
+
+<div id="about" class="popup info-popup">
+
+
+<div class="popup-content">
+
+
+<button class="close-btn" onclick="closeInfo('about')">
+
+✕
+
+</button>
+
+
+
+<h2>
+
+🏠 About La Casetta
+
+</h2>
+
+
+
+<p>
+
 Welcome to La Casetta Terrasini.
+
 <br><br>
-A cozy place to enjoy the beauty of Sicily, close to beaches, restaurants and the historic center.
+
+A comfortable place to experience Sicily, close to the sea, restaurants and the beauty of Terrasini.
+
 <br><br>
-✔ Free Wi-Fi<br>
-✔ Air conditioning<br>
-✔ Kitchen<br>
-✔ Comfortable rooms<br>
-✔ Perfect location
+
+✔ Comfortable rooms
+
+<br>
+
+✔ Equipped kitchen
+
+<br>
+
+✔ Air conditioning
+
+<br>
+
+✔ Free Wi-Fi
+
 </p>
+
+
+
+</div>
+
 
 </div>
 
@@ -647,185 +656,11 @@ A cozy place to enjoy the beauty of Sicily, close to beaches, restaurants and th
 
 
 
-<div id="check" class="page">
 
-<div class="close" onclick="closePage('check')">← Back</div>
 
-<h2>Check-in</h2>
+<!-- SCRIPT -->
 
-<p>
-
-Check-in from 15:00<br><br>
-
-Check-out before 10:00<br><br>
-
-Please contact the host for arrival instructions.
-
-</p>
-
-</div>
-
-
-
-
-
-<div id="wifi" class="page">
-
-<div class="close" onclick="closePage('wifi')">← Back</div>
-
-<h2>Wi-Fi & House Guide</h2>
-
-<p>
-
-Wi-Fi Name:<br>
-<strong>ADD WIFI NAME</strong>
-
-<br><br>
-
-Password:<br>
-<strong>ADD PASSWORD</strong>
-
-<br><br>
-
-Here you can add instructions for appliances, rubbish collection and house rules.
-
-</p>
-
-</div>
-
-
-
-
-
-<div id="explore" class="page">
-
-<div class="close" onclick="closePage('explore')">← Back</div>
-
-<h2>Explore Terrasini</h2>
-
-<p>
-
-Discover beaches, sunsets and Sicilian food.
-
-<br><br>
-
-🌊 Praiola Beach<br>
-🌅 Cala Rossa<br>
-🏛 Palermo<br>
-🏛 Monreale<br>
-🏺 Segesta
-
-</p>
-
-</div>
-
-
-
-
-
-<div id="food" class="page">
-
-<div class="close" onclick="closePage('food')">← Back</div>
-
-<h2>Restaurants</h2>
-
-<p>
-
-Add your favourite local restaurants here.
-
-<br><br>
-
-🍕 Pizza<br>
-🍝 Traditional Sicilian food<br>
-☕ Breakfast places
-
-</p>
-
-</div>
-
-
-
-
-
-<div id="airport" class="page">
-
-<div class="close" onclick="closePage('airport')">← Back</div>
-
-<h2>Airport & Transfers</h2>
-
-<p>
-
-✈ Palermo Airport ↔ Terrasini
-
-<br><br>
-
-🚍 Bus service:
-
-<a href="https://www.autoservizicracchiolo.it">
-
-Autoservizi Cracchiolo
-
-</a>
-
-<br><br>
-
-📞 Office:
-
-<a href="tel:+390918683361">
-
-+39 091 8683361
-
-</a>
-
-</p>
-
-</div>
-
-
-
-
-
-<div id="gallery" class="page">
-
-<div class="close" onclick="closePage('gallery')">← Back</div>
-
-<h2>Gallery</h2>
-
-<p>
-
-Photos of La Casetta Terrasini will appear here.
-
-</p>
-
-</div>
-
-
-
-
-
-<div id="contact" class="page">
-
-<div class="close" onclick="closePage('contact')">← Back</div>
-
-<h2>Contact Host</h2>
-
-<p>
-
-Need help?
-
-<br><br>
-
-📞 Phone:<br>
-ADD NUMBER
-
-<br><br>
-
-WhatsApp available.
-
-</p>
-
-</div>
-
+<script src="script.js"></script>
 
 
 </body>
