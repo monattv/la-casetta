@@ -13,44 +13,53 @@ const backgrounds = [
 ];
 
 
-let currentBackground = 0;
-
+let currentImage = 0;
 
 const background = document.querySelector(".background");
 
 
+
 function changeBackground(){
 
+
     background.style.opacity = "0";
+
 
 
     setTimeout(()=>{
 
 
         background.style.backgroundImage =
-        `url('${backgrounds[currentBackground]}')`;
+        `url("${backgrounds[currentImage]}")`;
 
 
-        background.style.opacity = "1";
+
+        background.style.opacity="1";
 
 
-        currentBackground++;
+
+        currentImage++;
 
 
-        if(currentBackground >= backgrounds.length){
 
-            currentBackground = 0;
+        if(currentImage >= backgrounds.length){
+
+            currentImage = 0;
 
         }
 
 
+
     },700);
+
+
 
 }
 
 
 
 background.style.transition="opacity .7s ease";
+
 
 
 changeBackground();
@@ -63,12 +72,15 @@ setInterval(changeBackground,6000);
 
 
 
+
+
+
 /* =========================
    LANGUAGE SYSTEM
 ========================= */
 
 
-let language="en";
+let currentLanguage="en";
 
 
 
@@ -82,25 +94,31 @@ title:"La Casetta Terrasini",
 
 welcome:"Your Sicilian home away from home.",
 
+
 intro:"Discover the house, book your stay and enjoy everything Terrasini has to offer.",
+
 
 booking:"Book Your Stay",
 
 booking_info:"Open Booking page",
 
+
 maps:"Get Directions",
 
 maps_info:"Open Google Maps",
 
+
 app:"Terrasini App",
 
-app_info:"Download the official app",
+app_info:"Download official app",
+
 
 airport:"Airport Transfers",
 
 airport_info:"Bus and transport information",
 
-emergency:"Emergency Numbers"
+
+emergency:"Emergency Contacts"
 
 
 },
@@ -114,28 +132,35 @@ title:"La Casetta Terrasini",
 
 welcome:"La tua casa siciliana lontano da casa.",
 
+
 intro:"Scopri la casa, prenota il soggiorno e vivi tutto quello che Terrasini offre.",
+
 
 booking:"Prenota il soggiorno",
 
 booking_info:"Apri Booking",
 
+
 maps:"Indicazioni stradali",
 
 maps_info:"Apri Google Maps",
+
 
 app:"App Terrasini",
 
 app_info:"Scarica l'app ufficiale",
 
+
 airport:"Trasferimenti aeroporto",
 
 airport_info:"Bus e informazioni trasporti",
 
-emergency:"Numeri di emergenza"
+
+emergency:"Contatti di emergenza"
 
 
 }
+
 
 
 };
@@ -147,22 +172,42 @@ emergency:"Numeri di emergenza"
 function changeLanguage(){
 
 
-language = language==="en" ? "it" : "en";
+currentLanguage =
+
+currentLanguage==="en" ? "it" : "en";
+
+
 
 
 document.querySelector(".language-btn").innerHTML =
-language==="en" ? "🇬🇧 EN" : "🇮🇹 IT";
+
+currentLanguage==="en"
+
+? "🇬🇧 EN"
+
+: "🇮🇹 IT";
 
 
 
-document.querySelectorAll("[data-i18n]").forEach(el=>{
 
 
-let key=el.dataset.i18n;
+document.querySelectorAll("[data-i18n]").forEach(element=>{
 
 
-el.innerHTML =
-translations[language][key];
+let key = element.dataset.i18n;
+
+
+
+if(translations[currentLanguage][key]){
+
+
+element.innerHTML =
+
+translations[currentLanguage][key];
+
+
+}
+
 
 
 });
@@ -182,17 +227,34 @@ translations[language][key];
 ========================= */
 
 
-let selectedAction=null;
+
+let actionReady=false;
+
+let selectedUrl="";
+
+
+
 
 
 function confirmAction(type,url){
 
 
-let title=document.getElementById("confirm-title");
 
-let text=document.getElementById("confirm-text");
+const popup =
+document.getElementById("confirm-box");
 
-let button=document.getElementById("continue-btn");
+
+const title =
+document.getElementById("confirm-title");
+
+
+const text =
+document.getElementById("confirm-text");
+
+
+const button =
+document.getElementById("continue-btn");
+
 
 
 
@@ -204,10 +266,11 @@ title.innerHTML="🏡 Booking";
 
 text.innerHTML=
 
-"Open Booking and reserve your stay at La Casetta Terrasini.";
+"Open Booking to reserve your stay at La Casetta Terrasini.";
 
 
 }
+
 
 
 
@@ -226,22 +289,30 @@ text.innerHTML=
 
 
 
-selectedAction=url;
+
+selectedUrl=url;
 
 
 
-document.getElementById("confirm-box").style.display="flex";
+popup.style.display="flex";
+
+
 
 
 
 button.onclick=function(){
 
-window.location.href=selectedAction;
+
+window.location.href=selectedUrl;
+
 
 };
 
 
+
 }
+
+
 
 
 
@@ -250,9 +321,12 @@ window.location.href=selectedAction;
 
 function closePopup(){
 
+
 document.getElementById("confirm-box").style.display="none";
 
+
 }
+
 
 
 
@@ -262,21 +336,19 @@ document.getElementById("confirm-box").style.display="none";
 
 
 /* =========================
-   APP BUTTON
+   APP TERRASINI
 ========================= */
 
 
 function openAppConfirm(){
 
 
-
-let popup=document.getElementById("app-info");
-
-
-popup.style.display="flex";
+openInfo("app-info");
 
 
 }
+
+
 
 
 
@@ -286,42 +358,44 @@ function openApp(){
 
 
 
-let ua=navigator.userAgent.toLowerCase();
+let device =
+
+navigator.userAgent.toLowerCase();
 
 
 
-if(ua.includes("android")){
 
 
-window.location.href=
+if(device.includes("android")){
+
+
+window.location.href =
 
 "https://play.google.com/store/apps/details?id=com.goodbarber.terrasini";
 
 
 }
 
-
 else if(
 
-ua.includes("iphone") ||
+device.includes("iphone") ||
 
-ua.includes("ipad")
+device.includes("ipad")
 
 ){
 
 
-window.location.href=
+window.location.href =
 
 "https://apps.apple.com/it/app/terrasini/id993594848";
 
 
 }
 
-
 else{
 
 
-window.location.href=
+window.location.href =
 
 "https://apps.apple.com/it/app/terrasini/id993594848";
 
@@ -340,7 +414,7 @@ window.location.href=
 
 
 /* =========================
-   INFORMATION WINDOWS
+   INFORMATION POPUPS
 ========================= */
 
 
@@ -367,18 +441,22 @@ document.getElementById(id).style.display="none";
 
 
 
+
+
+
 /* =========================
-   CLOSE POPUPS CLICK OUTSIDE
+   CLOSE POPUP OUTSIDE
 ========================= */
 
 
 document.querySelectorAll(".popup").forEach(popup=>{
 
 
-popup.addEventListener("click",function(e){
+popup.addEventListener("click",function(event){
 
 
-if(e.target===popup){
+
+if(event.target === popup){
 
 
 popup.style.display="none";
